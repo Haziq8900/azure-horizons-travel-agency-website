@@ -58,4 +58,4 @@ This project is open for learning and personal use. Feel free to fork and adapt 
 
 ---
 
-Made by Haziq Khan(https://github.com/Haziq8900)
+Author: Haziq Khan
