@@ -22,11 +22,12 @@ A responsive front-end website for a fictional travel agency, built with plain H
 
 ```
 azure-horizons-travel-agency-website/
-├── assets/          # Images (destination photos, logo, hero banner)
+├── assets/           # Images (destination photos, logo, hero banner)
 ├── css/
-│   └── style.css    # Site styling
-├── index.html        # Main landing page
-└── form.html        # Custom tour booking form
+│   ├── style.css     # Site styling
+│   └── form.css       # Form styling
+├── index.html         # Main landing page
+└── form.html          # Custom tour booking form
 ```
 
 ## 🚀 Getting Started
