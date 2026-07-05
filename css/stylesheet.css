@@ -1,0 +1,453 @@
+/* ============================================================
+   H&Z Travel Agency — Booking Form Stylesheet
+   Same boarding-pass / postcard identity as the main site:
+   each fieldset reads as one leg of the journey — a numbered
+   ticket section on warm postcard paper, dashed dividers
+   standing in for perforation.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+    --ink: #142C2A;
+    --paper: #F7F3EA;
+    --paper-soft: #FBF9F4;
+    --teal: #0E5C55;
+    --teal-dark: #0A423D;
+    --gold: #E3A94A;
+    --coral: #E2665F;
+    --line: rgba(20, 44, 42, 0.16);
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --max-w: 760px;
+    --radius: 4px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0 6vw 80px;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   PAGE HEADING — the ticket header
+   ============================================================ */
+
+body>h1 {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 40px 0 28px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--teal-dark);
+    text-align: center;
+    position: relative;
+}
+
+body>h1::after {
+    content: "\2708  BOOK YOUR JOURNEY";
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ============================================================
+   FORM SHELL
+   ============================================================ */
+
+form {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* every direct div wrapping a fieldset just passes width through */
+form>div {
+    width: 100%;
+}
+
+/* ============================================================
+   FIELDSETS — ticket sections
+   ============================================================ */
+
+fieldset {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-soft);
+    padding: 28px clamp(18px, 4vw, 34px) 30px;
+    position: relative;
+}
+
+/* perforation strip on the left, like a ticket stub edge */
+fieldset::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+    width: 1px;
+    background-image: radial-gradient(circle, var(--paper) 2.5px, transparent 2.6px);
+    background-size: 100% 14px;
+    background-position: center;
+}
+
+legend {
+    padding: 0 12px 0 0;
+    margin-left: -4px;
+}
+
+legend h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--teal-dark);
+    margin: 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--gold);
+}
+
+/* sub-headings used inside fieldsets (e.g. "Departure Date") */
+fieldset h2:not(legend h2) {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin: 20px 0 6px;
+    letter-spacing: 0.01em;
+}
+
+fieldset h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin: 18px 0 10px;
+}
+
+fieldset>div {
+    margin-top: 16px;
+}
+
+fieldset>div:first-of-type,
+fieldset>*:first-child+div {
+    margin-top: 16px;
+}
+
+/* ============================================================
+   LABELS & TEXT INPUTS
+   ============================================================ */
+
+label {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 11px 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: var(--font-body);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(14, 92, 85, 0.15);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(20, 44, 42, 0.4);
+}
+
+/* custom select arrow, kept minimal */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--teal) 50%),
+        linear-gradient(135deg, var(--teal) 50%, transparent 50%);
+    background-position: calc(100% - 20px) center, calc(100% - 14px) center;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 36px;
+}
+
+input[type="file"] {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    padding: 10px 0;
+}
+
+input[type="file"]::file-selector-button {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--paper);
+    background: var(--teal);
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: var(--teal-dark);
+}
+
+/* ============================================================
+   RADIO & CHECKBOX — boarding-pass style toggles
+   ============================================================ */
+
+input[type="radio"],
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--line);
+    background: var(--paper);
+    vertical-align: middle;
+    margin: 0 8px 0 0;
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+input[type="checkbox"] {
+    border-radius: 4px;
+}
+
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+    border-color: var(--teal);
+    background: var(--teal);
+}
+
+input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+input[type="checkbox"]:checked::after {
+    content: "\2713";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+input[type="radio"]+label,
+input[type="checkbox"]+label {
+    display: inline-block;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+/* activities checklist wraps nicely */
+fieldset:has(#city-tour)>div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 4px;
+}
+
+/* ============================================================
+   BUDGET RANGE SLIDER
+   ============================================================ */
+
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: 1;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--line);
+    margin: 0 14px;
+    vertical-align: middle;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--coral);
+    border: 3px solid var(--paper-soft);
+    box-shadow: 0 0 0 1px var(--coral);
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--coral);
+    border: 3px solid var(--paper-soft);
+    box-shadow: 0 0 0 1px var(--coral);
+    cursor: pointer;
+}
+
+label[for="budget"]+div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+label[for="budget"]+div span {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--teal);
+}
+
+#budget-value {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--coral);
+    font-size: 1rem;
+}
+
+/* ============================================================
+   TERMS / NEWSLETTER — flat, no ticket-strip needed
+   ============================================================ */
+
+fieldset:has(#newsletter),
+fieldset:has(#terms-and-conditions) {
+    background: var(--paper-soft);
+}
+
+/* ============================================================
+   SUBMIT / RESET
+   ============================================================ */
+
+fieldset:has(button)>div {
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 14px;
+}
+
+button {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    padding: 13px 30px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+button[type="submit"] {
+    background: var(--coral);
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background: var(--teal);
+    transform: translateY(-2px);
+}
+
+button[type="reset"] {
+    background: transparent;
+    color: var(--teal-dark);
+    border: 1.5px solid var(--line);
+}
+
+button[type="reset"]:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 560px) {
+    body {
+        padding: 0 5vw 60px;
+    }
+
+    fieldset {
+        padding: 22px 16px 26px;
+    }
+
+    fieldset:has(button)>div {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

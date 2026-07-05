@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <title>Custom Tours - Azure Horizon Travel Agency</title>
+</head>
+
+<body>
+    <h1>Azure Horizon Travel Agency- Journeys Beyond Imagination</h1>
+    <form action="/submit.php">
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>1. Personal Information</h2>
+                </legend>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter your Full Name" required>
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                </div>
+
+                <div>
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" id="phone" placeholder="Enter your valid Phone Number" required>
+                </div>
+
+                <div>
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" id="dob" required>
+                </div>
+
+                <div>
+                    <h2>Your Nationality</h2>
+                    <label for="nationality">Nationality</label>
+                    <select name="nationality" id="nationality" required>
+                        <option value="" disabled selected>Select your Nationality</option>
+                        <option value="afghanistan">Afghanistan</option>
+                        <option value="bangladesh">Bangladesh</option>
+                        <option value="croatia">Croatia</option>
+                        <option value="denmark">Denmark</option>
+                        <option value="England">England</option>
+                        <option value="france">France</option>
+                        <option value="greece">Greece</option>
+                        <option value="hungary">Hungary</option>
+                        <option value="indonesia">Indonesia</option>
+                        <option value="japan">Japan</option>
+                        <option value="kazakhstan">Kazakhstan</option>
+                        <option value="lebanon">Lebanon</option>
+                        <option value="mallta">Malta</option>
+                        <option value="norway">Norway</option>
+                        <option value="oman">Oman</option>
+                        <option value="pakistan">Pakistan</option>
+                        <option value="qatar">Qatar</option>
+                        <option value="russia">Russia</option>
+                        <option value="saudi_arabia">Saudi Arabia</option>
+                        <option value="turkey">Turkey</option>
+                        <option value="uzbekistan">Uzbekistan</option>
+                        <option value="vietnam">Vietnam</option>
+                        <option value="yemen">Yemen</option>
+                        <option value="zimbabwe">Zimbabwe</option>
+                    </select>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>2. Travel Information</h2>
+                </legend>
+                <div>
+                    <label for="destination">Destination</label>
+                    <select name="destination" id="destination" required>
+                        <option value="" disabled selected>Select your destination</option>
+                        <option value="france">France</option>
+                        <option value="sri lanka">Sri Lanka</option>
+                        <option value="uae">UAE</option>
+                        <option value="south africa">South Africa</option>
+                        <option value="england">England</option>
+                        <option value="pakistan">Pakistan</option>
+                        <option value="switzerland">Switzerland</option>
+                        <option value="ireland">Ireland</option>
+                        <option value="australia">Australia</option>
+                        <option value="carribean">Carribean</option>
+                        <option value="turkey">Turkey</option>
+                        <option value="spain">Spain</option>
+                    </select>
+                </div>
+
+                <div>
+                    <h2>Departure Date</h2>
+                    <label for="departure-date">Select Departure Date</label>
+                    <input type="date" name="departure-date" id="departure-date" required>
+                </div>
+
+                <div>
+                    <h2>Return Date</h2>
+                    <label for="return-date">Select Return Date</label>
+                    <input type="date" name="return-date" id="return-date" required>
+                </div>
+
+                <div>
+                    <h2>Number of Travllers</h2>
+                    <label for="number-of-travelers">Select number of Travelers</label>
+                    <input type="number" min="1" max="5" name="number-of-travelers" id="number-of-travelers" required>
+                </div>
+
+
+                <div>
+                    <h2>Prefered Travelling Class</h2>
+                    <p>Select your Travelling Class</p>
+                    <input type="radio" name="travelling-class" id="economy" value="Economy" required>
+                    <label for="economy">Economy Class</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="travelling-class" id="premium-economy" value="Premium Economy" required>
+                    <label for="premium-economy">Premium Economy</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="travelling-class" id="business" value="Business" required>
+                    <label for="business">Business Class</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="travelling-class" id="first-class" value="First Class" required>
+                    <label for="first-class">First Class</label>
+                </div>
+
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>3. Accomodation</h2>
+                </legend>
+                <div>
+                    <h2>Select Hotel Rating</h2>
+                    <label for="hotel-rating">Hotel Rating</label>
+                    <select name="hotel_rating" id="hotel-rating" requiured>
+                        <option value="" disabled selected>Select Prefered Hotel Rating</option>
+                        <option value="3_stars">3 Stars</option>
+                        <option value="4_stars">4 Stars</option>
+                        <option value="5_stars">5 Stars</option>
+                    </select>
+                </div>
+
+                <div>
+                    <h2>Select Room Type</h2>
+                    <input type="radio" name="room" id="single" value="Single Room" required>
+                    <label for="single">Single Room</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="room" id="double" value="Double Room" required>
+                    <label for="double">Double Room</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="room" id="family-suite" value="Family Suite" required>
+                    <label for="family-suite">Family Suite</label>
+                </div>
+
+                <div>
+                    <h2>Select number of rooms required</h2>
+                    <label for="number-of-rooms">Number of Rooms</label>
+                    <input type="number" min="1" max="5" name="number_of_rooms" id="number-of-rooms"
+                        placeholder="Select number of reuiqred rooms">
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>4. Activities</h2>
+                </legend>
+                <div>
+                    <h3>Select Activites you would like</h3>
+                    <input type="checkbox" name="activities" id="city-tour" value="City Tour">
+                    <label for="city-tour">City Tour</label>
+                    <input type="checkbox" name="activities" id="desert-safari" value="Desert Safari">
+                    <label for="desert-safari">Desert Safari</label>
+                    <input type="checkbox" name="activities" id="scuba-diving" value="Scuba Diving">
+                    <label for="scuba-diving">Scuba Diving</label>
+                    <input type="checkbox" name="activities" id="hiking" value="Hiking">
+                    <label for="hiking">Hiking</label>
+                    <input type="checkbox" name="activities" id="skiing" value="Skiing">
+                    <label for="skiing">Skiing</label>
+                    <input type="checkbox" name="activities" id="musuem-visit" value="Musuem Visit">
+                    <label for="musuem-visit">Musuem Visit</label>
+                    <input type="checkbox" name="activities" id="theme-park" value="Theme Park">
+                    <label for="theme-park">Theme Park</label>
+                    <input type="checkbox" name="activities" id="shopping-tour" value="Shopping Tour">
+                    <label for="shopping-tour">Shopping Tour</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>5. Meal Preferences</h2>
+                </legend>
+                <div>
+                    <p>Select Meal Type</p>
+                    <input type="radio" name="meal_type" id="vegetarian" value="Vegetarian" required>
+                    <label for="vegetarian">Vegetarian</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="meal_type" id="non-vegetarian" value="Non-Vegetarian" required>
+                    <label for="non-vegetarian">Non-Vegetarian</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="meal_type" id="vegan" value="Vegan" required>
+                    <label for="vegan">Vegan</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="meal_type" id="halal" value="Halal" required>
+                    <label for="halal">Halal</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>6. Passport Information</h2>
+                </legend>
+
+                <div>
+                    <label for="passport-number">Passport Number</label>
+                    <input type="text" name="passport_information" id="passport-number"
+                        placeholder="Enter your passport number" required>
+                </div>
+
+                <div>
+                    <label for="passport-exp-date">Passport Expiry Date</label>
+                    <input type="date" name="passport_information" id="passport-exp-date" required>
+                </div>
+
+                <div>
+                    <label for="passport-copy">Passport Copy</label>
+                    <input type="file" name="passport_information" id="passport-copy">
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>7. Emergency Contact</h2>
+                </legend>
+
+                <div>
+                    <label for="emergency-contact-name">Emergency Contact Name</label>
+                    <input type="text" name="emergency_info" id="emergency-contact-name"
+                        placeholder="Enter contact name" required>
+                </div>
+
+                <div>
+                    <label for="emergency-contact-number">Emergency Contact Number</label>
+                    <input type="tel" name="emergency_info" id="emergency-contact-number"
+                        placeholder="Enter contact number" reqiured>
+                </div>
+
+                <div>
+                    <p>Realtionship</p>
+                    <select name="emergency_info" id="realtionship" required>
+                        <option value="" disabled selected>Relation with emergency contact</option>
+                        <option value="father">Father</option>
+                        <option value="mother">Mother</option>
+                        <option value="brother">Brother</option>
+                        <option value="sister">Sister</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="friend">Friend</option>
+                    </select>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>8. Special Requests</h2>
+                </legend>
+
+                <div>
+                    <label for="special-request">Speacial Request</label>
+                    <textarea name="special_request" id="special-request"
+                        placeholder="Write any special requests..."></textarea>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>Budget</h2>
+                </legend>
+
+                <div>
+                    <label for="budget">Budget ($1,000 - $10,000)</label>
+
+                    <div>
+                        <span>$1,000</span>
+
+                        <input type="range" id="budget" name="budget" min="1000" max="10000" step="100" value="5000">
+
+                        <span>$10,000</span>
+                    </div>
+
+                    <p>Selected Budget: <span id="budget-value">$5000</span></p>
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>Personal Website or Socials</h2>
+                </legend>
+
+                <div>
+                    <label for="webste-or-socials">Personal Website or Social Profile</label>
+                    <input type="url" name="website_socials" id="webste-or-socials">
+                </div>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>Newsletter</h2>
+                </legend>
+
+                <div>
+                    <input type="checkbox" name="newsletter" id="newsletter"
+                        value="Send me travel deals and promotional offers.">
+                    <label for="newsletter">Send me travel deals and promotional offers.</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <fieldset>
+            <legend>
+                <h2>Terms and Conditions</h2>
+            </legend>
+
+            <div>
+                <input type="checkbox" name="terms_and_conditions" id="terms-and-conditions"
+                    value="I agree to the Terms and Conditions and Privacy Policy.">
+                <label for="terms-and-conditions">I agree to the Terms and Conditions and Privacy Policy.</label>
+            </div>
+        </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <legend>
+                    <h2>Submit or Reset Information</h2>
+                </legend>
+
+                <div>
+                    <button type="submit">Submit Information</button>
+                </div>
+
+                <div>
+                    <button type="reset">Reset all Information</button>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+
+    ...
+    <script>
+        const budgetSlider = document.getElementById("budget");
+        const budgetOutput = document.getElementById("budget-value");
+
+        budgetSlider.addEventListener("input", function () {
+            budgetOutput.textContent = "$" + budgetSlider.value;
+        });
+    </script>
+
+</body>
+
+</html>
+</body>
+
+</html>

@@ -1,0 +1,697 @@
+/* ============================================================
+   H&Z Travel Agency — Stylesheet
+   Concept: the boarding pass / postcard.
+   Destinations read as tickets — perforated edges, airport
+   codes, dashed "flight paths" — because that's the one
+   artifact everyone associates with actually going somewhere.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+    /* ---- Color tokens ---- */
+    --ink: #142C2A;
+    /* near-black teal ink for text */
+    --paper: #F7F3EA;
+    /* warm postcard paper */
+    --paper-soft: #FBF9F4;
+    /* lighter panel paper */
+    --teal: #0E5C55;
+    /* primary deep teal */
+    --teal-dark: #0A423D;
+    --gold: #E3A94A;
+    /* sun / stamp gold */
+    --coral: #E2665F;
+    /* sunset coral accent */
+    --line: rgba(20, 44, 42, 0.16);
+
+    /* ---- Type ---- */
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    /* ---- Layout ---- */
+    --max-w: 1180px;
+    --radius: 4px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--teal);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    color: var(--teal-dark);
+    margin: 0;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 18px 6vw;
+    background: var(--paper-soft);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.logo img {
+    height: 52px;
+    width: auto;
+}
+
+.title {
+    margin-right: auto;
+}
+
+.title h1 {
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.title p {
+    margin: 2px 0 0;
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+nav {
+    display: flex;
+    gap: clamp(14px, 2vw, 28px);
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--teal);
+    border-bottom-color: var(--gold);
+}
+
+/* ============================================================
+   MAIN — shared section rhythm
+   ============================================================ */
+
+main>section {
+    padding: 72px 6vw;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    scroll-margin-top: 96px;
+    /* keeps the sticky header from covering the section on anchor jumps */
+}
+
+header {
+    scroll-margin-top: 0;
+}
+
+main>section h2 {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 600;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+main>section h2::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--coral);
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+/* ============================================================
+   HERO — the postcard
+   ============================================================ */
+
+.hero {
+    position: relative;
+    padding: 0;
+    max-width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+}
+
+.hero img {
+    width: 100%;
+    height: min(62vw, 560px);
+    object-fit: cover;
+    filter: saturate(1.05) contrast(1.02);
+}
+
+.hero::before {
+    /* sunset gradient wash so the postcard caption reads clean */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14, 44, 42, 0) 40%, rgba(10, 25, 24, 0.78) 100%);
+    pointer-events: none;
+}
+
+.hero::after {
+    /* postmark stamp, top-right corner of the postcard */
+    content: "H&Z \2708 KHI";
+    position: absolute;
+    top: 24px;
+    right: clamp(16px, 4vw, 48px);
+    width: 92px;
+    height: 92px;
+    border: 2px dashed rgba(247, 243, 234, 0.8);
+    border-radius: 50%;
+    color: #F7F3EA;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(8deg);
+}
+
+.hero p {
+    position: absolute;
+    left: 6vw;
+    bottom: 32px;
+    max-width: 46ch;
+    margin: 0;
+    color: var(--paper);
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+
+.about p {
+    max-width: 68ch;
+    font-size: 1.02rem;
+    color: var(--ink);
+    margin-top: 18px;
+}
+
+/* ============================================================
+   DESTINATIONS — boarding-pass cards
+   ============================================================ */
+
+.destinations {
+    display: block;
+}
+
+.destinations h2 {
+    display: block;
+    margin-bottom: 32px;
+}
+
+.destinations {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0;
+}
+
+.destinations h2 {
+    grid-column: 1 / -1;
+}
+
+.destinations .card {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    align-items: stretch;
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 22px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.destinations .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -18px rgba(14, 44, 42, 0.45);
+}
+
+.destinations .card img {
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+    object-fit: cover;
+}
+
+.destinations .card h3,
+.destinations .card p {
+    padding: 20px 24px;
+}
+
+.destinations .card h3 {
+    align-self: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.destinations .card p {
+    align-self: center;
+    color: var(--ink);
+    opacity: 0.85;
+    border-left: 1px dashed var(--line);
+}
+
+/* airport-code style tag, read straight off each card's data-code attribute
+   so every destination gets the same ticket treatment, however many there are */
+.destinations .card::before {
+    content: attr(data-code);
+    align-self: center;
+    justify-self: center;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+/* perforation dots between image and text, ticket-stub style */
+.destinations .card::after {
+    content: "";
+    position: absolute;
+    left: 220px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-image: radial-gradient(circle, var(--paper) 2.5px, transparent 2.6px);
+    background-size: 100% 14px;
+    background-position: center;
+}
+
+/* ============================================================
+   PACKAGES — the departures board
+   ============================================================ */
+
+.packages>h2:first-of-type {
+    margin-bottom: 28px;
+}
+
+.packages table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--line) !important;
+    background: var(--paper-soft);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: 0.92rem;
+}
+
+.packages table thead {
+    background: var(--teal);
+}
+
+.packages table th {
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.76rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 14px 16px;
+    border: 1px solid rgba(247, 243, 234, 0.15) !important;
+}
+
+.packages table td {
+    padding: 14px 16px;
+    border: 1px solid var(--line) !important;
+    vertical-align: top;
+    color: var(--ink);
+}
+
+.packages table td:first-child {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--teal-dark);
+    white-space: nowrap;
+}
+
+.packages table td:nth-child(4) {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--coral);
+    white-space: nowrap;
+}
+
+.packages table tbody tr:nth-child(even) {
+    background: rgba(14, 92, 85, 0.05);
+}
+
+.packages table tbody tr:hover {
+    background: rgba(227, 169, 74, 0.14);
+}
+
+/* table needs to scroll on small screens rather than crush itself */
+.packages {
+    overflow-x: auto;
+}
+
+.packages table {
+    min-width: 860px;
+}
+
+/* the nested "Book your favourite package" panel */
+.packages div.packages {
+    overflow: visible;
+    min-width: 0;
+    margin-top: 36px;
+    padding: 26px clamp(18px, 4vw, 32px);
+    background: var(--paper-soft);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+}
+
+.packages div.packages h2 {
+    font-size: 1.2rem;
+    display: block;
+}
+
+.packages div.packages h2::after {
+    display: none;
+}
+
+.packages div.packages select {
+    width: 100%;
+    max-width: 360px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 12px 36px 12px 18px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--teal) 50%),
+        linear-gradient(135deg, var(--teal) 50%, transparent 50%);
+    background-position: calc(100% - 20px) center, calc(100% - 14px) center;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.packages div.packages select:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(14, 92, 85, 0.15);
+}
+
+.packages .book {
+    margin-top: 18px;
+}
+
+.packages .book button {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    background: var(--coral);
+    border: none;
+    border-radius: 999px;
+    padding: 13px 32px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.packages .book button:hover {
+    background: var(--teal);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   WHY CHOOSE US
+   ============================================================ */
+
+.why-us {
+    background: var(--teal);
+    color: var(--paper);
+    border-radius: var(--radius);
+    max-width: calc(var(--max-w) - 0px);
+}
+
+.why-us h2 {
+    color: var(--paper);
+}
+
+.why-us h2::after {
+    background: var(--gold);
+}
+
+.why-us ul {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px 24px;
+}
+
+.why-us li {
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    padding-left: 26px;
+    position: relative;
+}
+
+.why-us li::before {
+    content: "\2708";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+/* ============================================================
+   BOOKING
+   ============================================================ */
+
+.booking {
+    text-align: left;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-soft);
+}
+
+.booking p {
+    margin: 10px 0;
+}
+
+.booking a {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--coral);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 999px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.booking a:hover {
+    background: var(--teal);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+
+.contact p {
+    font-family: var(--font-mono);
+    font-size: 0.94rem;
+    margin: 6px 0;
+}
+
+.contact strong {
+    font-family: var(--font-body);
+    color: var(--teal-dark);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+    background: var(--teal-dark);
+    color: var(--paper);
+    padding: 40px 6vw 28px;
+    text-align: center;
+}
+
+footer h3 {
+    color: var(--paper);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+footer p {
+    margin: 6px 0;
+    opacity: 0.85;
+    font-size: 0.92rem;
+}
+
+footer hr {
+    border: none;
+    border-top: 1px dashed rgba(247, 243, 234, 0.3);
+    margin: 20px auto;
+    max-width: 340px;
+}
+
+footer p:last-child {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    opacity: 0.6;
+}
+
+footer .socials a {
+    color: var(--paper);
+    text-decoration: none;
+    font-weight: 500;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+footer .socials a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 720px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .title {
+        margin-right: 0;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    .hero img {
+        height: 70vw;
+    }
+
+    .hero::after {
+        width: 68px;
+        height: 68px;
+        font-size: 0.58rem;
+        top: 14px;
+    }
+
+    .hero p {
+        left: 5vw;
+        right: 5vw;
+        bottom: 20px;
+    }
+
+    .destinations .card {
+        grid-template-columns: 1fr;
+    }
+
+    .destinations .card::before {
+        margin: 16px 24px 0;
+        justify-self: start;
+    }
+
+    .destinations .card::after {
+        display: none;
+    }
+
+    .destinations .card p {
+        border-left: none;
+        padding-top: 0;
+    }
+
+    .destinations .card img {
+        height: 180px;
+    }
+}
